@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         if (auth()->user()->type == 0) {
             return view('home');    
         }
@@ -30,7 +32,9 @@ class HomeController extends Controller
             return view('admin');    
         }
         else if (auth()->user()->type == 2) {
-            return view('super_admin');    
+            $allusers = \App\User::where('type', 1)
+            ->OrWhere('type', 0)->get();
+            return view('super_admin', compact('allusers', 'user'));    
         }
     }
 }

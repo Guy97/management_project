@@ -1,2 +1,8 @@
 @extends('layouts.app')
-SUPER ADMINNNNNNNNNNNNNN
+@section('content')
+<br>
+{{ $user->name }} <br>
+    @foreach ($allusers as $alluser)
+        {{ $alluser->name }} <br>
+    @endforeach
+@endsection
