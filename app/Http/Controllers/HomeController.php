@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -37,4 +38,14 @@ class HomeController extends Controller
             return view('super_admin', compact('allusers', 'user'));    
         }
     }
+
+    public function generatePDF()
+    {
+        $data = ['title' => 'cazzo'];
+        $pdf = PDF::loadView('myPDF', $data);
+        return $pdf->download('itsolutionstuff.pdf');
+
+    }
+
+
 }
