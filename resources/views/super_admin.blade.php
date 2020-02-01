@@ -9,43 +9,39 @@
     <div class="col-md-3"></div>
     <div class="col-md-3"><a href="{{action('AdminPanelController@index')}}"><button type="button" class="btn btn-primary">Crea</button></a></div>
 </div>
-<div class="row">
-    <!-- <div class="card"> -->
-        <div class="col-md-3 text-center">
-            <strong>Nome Agente</strong>
-        </div>
-        <div class="col-md-3 text-center">
-            <strong>Ruolo</strong>
-        </div>
-        <div class="col-md-3 text-center">
-            <strong>Regioni</strong>
-        </div>
-        <div class="col-md-3 text-center">
-            <strong>Modifica / Elimina</strong>
-        </div>
-    <!-- </div> -->
-</div>
-    @foreach ($allusers as $alluser)
+
     <div class="row">
-    <!-- <div class="card"> -->
-        <div class="col-md-3 text-center">
-            <p>{{ $alluser->name }}</p>
-        </div>
-        <div class="col-md-3 text-center">
-            @if ($alluser->type == 1)
-                <p>Admin</p>
+    @foreach ($allusers as $alluser)
+    
+    <div class="col-md-3" id="userLine">
+    <div class="card" style="width:200px">
+    @if ($alluser->type == 1)
+    <img class="card-img-top" src="/img/admin.png" alt="Card image">
             @elseif ($alluser->type == 0)
-                <p>Agente</p>
+            <img class="card-img-top" src="/img/agent.png" alt="Card image">
             @endif
-        </div>
-        <div class="col-md-3 text-center">
-            <strong>Regioni</strong>
-        </div>
-        <div class="col-md-3 text-center">
-            <strong>Modifica / Elimina</strong>
-        </div>
-    <!-- </div> -->
+  
+  <div class="card-body">
+    <h4 class="card-title">{{ $alluser->name }}</h4>
+    <p class="card-text">Regione: Regione<br>
+    @if ($alluser->type == 1)
+                Ruolo: Admin
+            @elseif ($alluser->type == 0)
+            Ruolo: Agente
+            @endif
+    </p>
+    <div class="btn-group">
+            <a href="{{action('AdminPanelController@edit', $alluser->id)}}" class="btn btn-primary btnIcon">Modifica</a>
+            <form action="{{action('AdminPanelController@destroy', $alluser->id)}}" method="post">
+                @csrf
+                <input name="_method" type="hidden" value="DELETE">
+                <button class="btn btn-danger" type="submit">Elimina</button>
+            </form>
+          </div>
+    </div>
+</div>
     </div>
     @endforeach
+    </div>
 </div>
 @endsection
