@@ -7,7 +7,7 @@
     </div>
     
     <div class="col-md-3"></div>
-    <div class="col-md-3"><a href="{{action('AdminPanelController@index')}}"><button type="button" class="btn btn-primary">Crea</button></a></div>
+    <div class="col-md-3"><a href="{{action('HomeController@generatePDF')}}"><button type="button" class="btn btn-primary">Crea Preventivo</button></a></div>
 </div>
 
     <div class="row">
@@ -62,6 +62,20 @@
     </div>
     <?php $info = ""; ?>
     @endforeach
+    <div class="col-md-3" id="userLine">
+    <div class="card" style="width:200px">
+    <img class="card-img-top" src="/img/AddUser.png" alt="Card image">
+  
+  <div class="card-body">
+    
+    <p class="card-text"><br>
+    </p>
+    <div class="btn-group">
+        <a href="{{action('AdminPanelController@index')}}"><button type="button" class="btn btn-primary">Crea</button></a>
+    </div>
+    </div>
+</div>
+    </div>
     </div>
 </div>
 @endsection
