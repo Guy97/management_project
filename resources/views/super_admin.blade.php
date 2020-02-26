@@ -13,6 +13,21 @@
     <div class="row">
     @foreach ($allusers as $alluser)
     
+    <?php
+        $info = "";
+        if (Illuminate\Support\Facades\DB::table('user_region')->where('user_id', $alluser->id)->exists()) {
+            $out = Illuminate\Support\Facades\DB::table('user_region')->where('user_id', $alluser->id)->get();
+            //dd($out);
+            foreach ($out as $region) {
+                $reg = \App\Region::where('id', $region->region_id)->get();
+                foreach ($reg as $regOn) {
+                    $info .= $regOn->name_region." ";
+                }
+                
+            }
+        }
+    ?> 
+
     <div class="col-md-3" id="userLine">
     <div class="card" style="width:200px">
     @if ($alluser->type == 1)
@@ -23,7 +38,11 @@
   
   <div class="card-body">
     <h4 class="card-title">{{ $alluser->name }}</h4>
-    <p class="card-text">Regione: Regione<br>
+    @if ($info == "")
+    <p class="card-text">Regione: Non selezionata<br>
+    @else
+    <p class="card-text">Regione: {{ $info }}<br>
+    @endif
     @if ($alluser->type == 1)
                 Ruolo: Admin
             @elseif ($alluser->type == 0)
@@ -41,6 +60,7 @@
     </div>
 </div>
     </div>
+    <?php $info = ""; ?>
     @endforeach
     </div>
 </div>
