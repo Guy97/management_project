@@ -30,7 +30,7 @@ class AdminPanelController extends Controller
      */
     public function create()
     {
-        //
+        //restart
     }
 
     /**
