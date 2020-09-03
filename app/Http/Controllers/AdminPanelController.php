@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\BodytoneClient;
+use App\BodytoneProduct;
 
 class AdminPanelController extends Controller
 {
@@ -31,6 +33,37 @@ class AdminPanelController extends Controller
     public function create()
     {
         //restart
+    }
+
+    public function customCreateProduct(Request $request)
+    {
+        $body_client = new BodytoneProduct;
+        $body_client->name = $request->input('name');
+        $body_client->code = $request->input('code');
+        $body_client->price = (float)$request->input('price');
+        $body_client->price_install = (float)$request->input('price_install');
+        $body_client->time_install = (int)$request->input('time_install');
+        $body_client->price_transport = (float)$request->input('price_transport');
+        $request->validate([
+            'image_prod' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        
+        if ($request->hasfile('image_prod')) {
+            $file = $request->file('image_prod');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $file->getClientOriginalName().time() . '.' . $extension;
+            $file->storeAs('public/products', $fileName);
+            $body_client->image_prod = $fileName;
+        }
+        //dd($body_client);
+        $body_client->save();
+        return back()->with('success', 'Articolo aggiunto con successo');
+    }
+
+    public function addProduct()
+    {
+        $products = BodytoneProduct::all();
+        return view('addProduct', compact('products'));
     }
 
     /**

@@ -5,10 +5,8 @@
     <div class="col-md-6">
     <div class="text-center"><h2><strong>Bentornato {{ $user->name }}</strong></h2></div>
     </div>
-    
-    <div class="col-md-3"></div>
-    <div class="col-md-3"><a href="{{action('HomeController@generatePDF')}}"><button type="button" class="btn btn-primary">Crea Preventivo</button></a></div>
 </div>
+
 
     <div class="row">
     @foreach ($allusers as $alluser)

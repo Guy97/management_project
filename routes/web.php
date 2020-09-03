@@ -18,5 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/admin_manage', 'AdminPanelController');
+
 Route::get('generate-pdf','HomeController@generatePDF');
+Route::get('add_article_admin','AdminPanelController@addProduct');
+Route::post('/new_article','AdminPanelController@customCreateProduct');
+Route::resource('/admin_manage', 'AdminPanelController');

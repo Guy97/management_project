@@ -71,7 +71,21 @@
                 </div>
             </div>
         </nav>
-
+        @auth
+        <div class="container">
+        <div class="row" id="intestation" style="text-align: center;">
+        @if (Auth::user()->type == 2)
+    <div class="col-md-4"><a href="/add_article_admin"><button type="button" class="btn btn-primary">Articoli</button></div>
+    <div class="col-md-4"><a href=""><button type="button" class="btn btn-primary">Clienti</button></div>
+    <div class="col-md-4"><a href="{{action('HomeController@generatePDF')}}"><button type="button" class="btn btn-primary">Preventivi</button></a></div>
+    @else
+    <div class="col-md-6"><a href=""><button type="button" class="btn btn-primary">Clienti</button></div>
+    <!-- <div class="col-md-4"></div> -->
+    <div class="col-md-6"><a href="{{action('HomeController@generatePDF')}}"><button type="button" class="btn btn-primary">Preventivi</button></a></div>
+    @endif
+</div>
+        @endauth
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

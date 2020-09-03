@@ -11,104 +11,13 @@ class RegionTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Region::insert([
-            'name_region' => 'Abruzzo',
-            'code' => 04,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Basilicata',
-            'code' => 07,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Calabria',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Campania',
-            'code' => 06,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Emilia_Romagna',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Friuli_Venezia_Giulia',
-            'code' => 03,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Lazio',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Liguria',
-            'code' => 02,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Lombardia',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Marche',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Molise',
-            'code' => 04,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Piemonte',
-            'code' => 02,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Puglia',
-            'code' => 07,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Sardegna',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Sicilia',
-            'code' => 05,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Toscana',
-            'code' => 01,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Trentino_Alto_Adige',
-            'code' => 03,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Umbria',
-            'code' => 04,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Valle_DAosta',
-            'code' => 02,
-        ]);
-
-        App\Region::insert([
-            'name_region' => 'Veneto',
-            'code' => 03,
-        ]);
+        $location = [
+            'Agrigento', 'Alessandria', 'Ancona', 'Aosta', 'Arezzo', 'Ascoli Piceno', 'Asti', 'Avellino', 'Bari', 'Barletta-Andria-Trani', 'Belluno', 'Benevento', 'Bergamo', 'Biella', 'Bologna', 'Bolzano', 'Brescia', 'Brindisi', 'Cagliari', 'Caltanisetta', 'Campobasso', 'Caserta', 'Catania', 'Catanzaro', 'Chieti', 'Como', 'Cosenza', 'Cremona', 'Crotone', 'Cuneo', 'Enna', 'Fermo', 'Ferrara', 'Firenze', 'Foggia', 'Forlì-Cesena', 'Frosinone', 'Genova', 'Gorizia', 'Grosseto', 'Imperia', 'Isernia', 'L\'aquila', 'La Spezia', 'Latina', 'Lecce', 'Lecco', 'Livorno', 'Lodi', 'Lucca', 'Macerata', 'Mantova', 'Massa-Carrara', 'Matera', 'Messina', 'Milano', 'Modena', 'Monza e Brianza', 'Napoli', 'Novara', 'Nuoro', 'Oristano', 'Palermo', 'Padova', 'Parma', 'Pavia', 'Perugia', 'Pesaro e Urbino', 'Pescara', 'Piacenza', 'Pisa', 'Pistoia', 'Pordenone', 'Potenza', 'Prato', 'Reggio Calabria', 'Ragusa', 'Ravenna', 'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo', 'Salerno', 'Sassari', 'Savona', 'Siena', 'Siracusa', 'Sondrio', 'Sud Sardegna', 'Taranto', 'Teramo', 'Terni', 'Torino', 'Trapani', 'Trento', 'Treviso', 'Trieste', 'Udine', 'Varese', 'Venezia', ' Verbano-Cusio-Ossola', 'Vercelli', 'Verona', 'Vibio Valentia', 'Vicenza', 'Viterbo'
+        ];
+        for ($i = 0; $i < count($location); $i++) { 
+            App\Region::insert([
+                'name_region' => $location[$i],
+            ]);
+        }
     }
 }
